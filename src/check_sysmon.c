@@ -4,8 +4,7 @@
 static int CheckService(SC_HANDLE hSCManager, const char* serviceName) {
     SC_HANDLE hService = OpenService(hSCManager, serviceName, SERVICE_QUERY_STATUS);
     if (hService == NULL) {
-        printf("%s service not found. Error: %lu\n", serviceName, GetLastError());
-        return 2;
+        return 2;  // Service not found
     }
 
     SERVICE_STATUS_PROCESS ssp;
@@ -38,6 +37,11 @@ int CheckSysmonStatus(void) {
     int sysmonResult = CheckService(hSCManager, "Sysmon");
 
     CloseServiceHandle(hSCManager);
+    
+    // If both services are not found (result = 2), print the message
+    if (sysmon64Result == 2 && sysmonResult == 2) {
+        printf("Sysmon service not found\n");
+    }
     
     // Return success if at least one service is running
     return (sysmon64Result && sysmonResult);

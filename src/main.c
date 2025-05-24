@@ -1,9 +1,9 @@
 #include <stdio.h>
+#include "check_debugger.c"
 #include "check_region.c"
 #include "check_sysmon.c"
 #include "unload_sysmon.c"
 #include "patch_etw.c"
-#include "check_debugger.c"
 
 int main(void) {
     int result;
