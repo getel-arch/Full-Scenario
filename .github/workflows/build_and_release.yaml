@@ -23,7 +23,7 @@ jobs:
       run: New-Item -ItemType Directory -Path .\output
 
     - name: Compile 64bit Binary
-      run: gcc .\src\main.c -o .\output\full_scenario_x64.exe -s -m64 -lfltlib
+      run: gcc .\src\main.c -o .\output\full_scenario_x64.exe -s -m64 -lfltlib -lntdll
 
     - name: Read Version
       run: |
