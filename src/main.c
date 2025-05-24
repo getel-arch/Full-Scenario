@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "unload_sysmon.h"
-#include "patch_etw.h"
+#include <unload_sysmon.h>
+#include <patch_etw.h>
 
 int main(void) {
     int result;
