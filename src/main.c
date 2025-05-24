@@ -20,12 +20,12 @@ int main(void) {
 
     printf("Checking Sysmon status...\n");
     result = CheckSysmonStatus();
-    if (result == 2) {
-        printf("Sysmon check failed\n");
-        return result;
-    }
-    if (result == 1) {
-        printf("Sysmon is not running, skipping unload\n");
+    if (result != 0) {
+        if (result == 2) {
+            printf("Sysmon check failed\n");
+        } else {
+            printf("Sysmon is not running, skipping unload\n");
+        }
     } else {
         printf("Unloading Sysmon...\n");
         result = UnloadSysmon();
