@@ -1,5 +1,4 @@
 #include <windows.h>
-#include "patch_etw.h"
 
 int PatchEtw(void) {
     DWORD dwOld = 0;
